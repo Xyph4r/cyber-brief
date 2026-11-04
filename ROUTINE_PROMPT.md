@@ -19,8 +19,8 @@ Link every item to its original source (the deep-dive article, advisory, or rese
 
 ## Step 3 — Security Now cross-check
 1. Read `_data/securitynow.yml` (`last_episode`).
-2. Fetch https://www.grc.com/securitynow.htm and find the highest episode number N that has a transcript link `/sn/sn-N.txt`.
-3. If N > last_episode, process each new episode (oldest first, at most 2): download `https://www.grc.com/sn/sn-N.txt` (use `curl` in Bash if available, otherwise WebFetch asking for a complete list of every news item and topic discussed). Note the episode title.
+2. For N = last_episode + 1 (then +2), fetch `https://www.grc.com/sn/sn-N.txt`. Only treat it as published if it is a plain-text transcript starting with `GIBSON RESEARCH CORPORATION` — GRC lists upcoming transcript links inside HTML comments before they exist, and a missing file returns an HTML 404 page. Transcripts usually appear a few days after the Tuesday episode.
+3. Process each published new episode (oldest first, at most 2). Use `curl` in Bash if it can reach grc.com, otherwise WebFetch asking for a complete list of every news item and topic discussed. Take the title from the `TITLE:` line.
 4. Compare every topic in the episode against the briefs in `_posts/` from the last 10 days (grep for CVE IDs, vendor and product names, threat-actor names).
 5. Topics that were missed, or covered only superficially, go into a `## Security Now cross-check {#security-now}` section (see format). Find and link the original source for each, plus the transcript. Add one compact line listing topics that were already covered, linking to the earlier brief.
 6. Add `securitynow: N` and `securitynow_title: "<episode title>"` to the post front matter, and set `last_episode: N` in `_data/securitynow.yml`.
