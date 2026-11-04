@@ -1,8 +1,8 @@
 {%- assign p = include.post -%}
 <article class="brief">
   <header class="brief-head">
-    <p class="kicker">Daily brief{% if p.securitynow %} · <span class="kicker-sn">Security Now #{{ p.securitynow }}</span>{% endif %}</p>
-    <h1><a href="{{ p.url | relative_url }}">{{ p.date | date: "%A, %-d %B %Y" }}</a></h1>
+    <p class="kicker">{{ p.kicker | default: "Daily brief" }}{% if p.securitynow %} · <span class="kicker-sn">Security Now #{{ p.securitynow }}</span>{% endif %}</p>
+    <h1><a href="{{ p.url | relative_url }}">{% if p.heading %}{{ p.heading }}{% else %}{{ p.date | date: "%A, %-d %B %Y" }}{% endif %}</a></h1>
     {% if p.tldr %}<p class="tldr">{{ p.tldr }}</p>{% endif %}
     <div class="chips" data-chips></div>
     <input class="filter" type="search" placeholder="Filter items… (ransomware, CVE-2026, Microsoft, Germany)" data-filter>

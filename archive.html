@@ -10,7 +10,7 @@ title: Archive
   {% for post in m.items %}
     <li>
       <a href="{{ post.url | relative_url }}"><span class="a-date">{{ post.date | date: "%a %-d" }}</span></a>
-      <span class="a-tldr">{{ post.tldr }}{% if post.securitynow %} <code>SN #{{ post.securitynow }}</code>{% endif %}</span>
+      <span class="a-tldr">{% if post.kicker %}<code>{{ post.kicker }}</code> {% endif %}{{ post.tldr }}{% if post.securitynow %} <code>SN #{{ post.securitynow }}</code>{% endif %}</span>
     </li>
   {% endfor %}
   </ul>
