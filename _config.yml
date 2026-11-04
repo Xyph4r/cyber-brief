@@ -1,8 +1,8 @@
 title: Cyber Morning Brief
 description: Daily cybersecurity news — breaches, CVEs, threat intel, defense and policy — with links to the original sources.
 timezone: Europe/Berlin
-url: "https://xyph4r.github.io"
-baseurl: "/cyber-brief"
+url: "https://news.4x-labs.com"
+baseurl: ""
 permalink: /:year/:month/:day/
 markdown: kramdown
 kramdown:

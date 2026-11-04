@@ -2,7 +2,7 @@
 
 Daily cybersecurity news — breaches, CVEs, threat intel, blue team, policy — compiled each morning by a scheduled Claude routine and published with GitHub Pages.
 
-**Site:** https://xyph4r.github.io/cyber-brief/
+**Site:** https://news.4x-labs.com/
 
 ## How it works
 
@@ -31,5 +31,5 @@ See `ROUTINE_PROMPT.md` → Step 4. In short: `## Name {#section-id}` headers, o
 
 ```sh
 gem install --user-install jekyll jekyll-feed kramdown-parser-gfm webrick
-jekyll serve   # http://localhost:4000/cyber-brief/
+jekyll serve   # http://localhost:4000/
 ```
