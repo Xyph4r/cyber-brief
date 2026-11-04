@@ -1,0 +1,35 @@
+---
+layout: default
+title: By category
+---
+<h1 class="page-title">By category</h1>
+<p class="muted">The last {{ site.category_days }} days, one topic at a time.</p>
+<div class="tabs" data-tabs>
+  {% for c in site.data.categories %}{% if c.browse %}
+  <a href="#{{ c.id }}" data-tab="{{ c.id }}" class="tab cat-{{ c.id }}">{{ c.icon }} {{ c.name }}</a>
+  {% endif %}{% endfor %}
+</div>
+<input class="filter" type="search" placeholder="Filter items…" data-filter>
+<div data-brief>
+{% for c in site.data.categories %}{% if c.browse %}
+  {% capture marker %}id="{{ c.id }}"{% endcapture %}
+  <section class="cat-panel cat-{{ c.id }}" data-panel="{{ c.id }}">
+    <h2 class="panel-title">{{ c.icon }} {{ c.name }}</h2>
+    {% assign found = false %}
+    {% for post in site.posts limit: site.category_days %}
+      {% assign chunks = post.content | split: '<h2 ' %}
+      {% for chunk in chunks %}
+        {% assign head = chunk | split: '>' | first %}
+        {% if head == marker %}
+          {% assign found = true %}
+          <div class="day">
+            <h3 class="day-title"><a href="{{ post.url | relative_url }}#{{ c.id }}">{{ post.date | date: "%A, %-d %B" }}</a></h3>
+            {{ chunk | split: '</h2>' | last }}
+          </div>
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+    {% unless found %}<p class="muted">Nothing in this category in the last {{ site.category_days }} days.</p>{% endunless %}
+  </section>
+{% endif %}{% endfor %}
+</div>

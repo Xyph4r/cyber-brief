@@ -1,0 +1,17 @@
+{%- assign p = include.post -%}
+<article class="brief">
+  <header class="brief-head">
+    <p class="kicker">Daily brief{% if p.securitynow %} · <span class="kicker-sn">Security Now #{{ p.securitynow }}</span>{% endif %}</p>
+    <h1><a href="{{ p.url | relative_url }}">{{ p.date | date: "%A, %-d %B %Y" }}</a></h1>
+    {% if p.tldr %}<p class="tldr">{{ p.tldr }}</p>{% endif %}
+    <div class="chips" data-chips></div>
+    <input class="filter" type="search" placeholder="Filter items… (ransomware, CVE-2026, Microsoft, Germany)" data-filter>
+  </header>
+  <div class="brief-body" data-brief>
+    {{ include.body }}
+  </div>
+  <nav class="pager">
+    {% if p.previous %}<a class="prev" href="{{ p.previous.url | relative_url }}">← {{ p.previous.date | date: "%a %-d %b" }}</a>{% else %}<span></span>{% endif %}
+    {% if p.next %}<a class="next" href="{{ p.next.url | relative_url }}">{{ p.next.date | date: "%a %-d %b" }} →</a>{% endif %}
+  </nav>
+</article>

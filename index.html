@@ -1,0 +1,12 @@
+---
+layout: default
+---
+{% assign latest = site.posts.first %}
+{% if latest %}
+  {% include brief.html post=latest body=latest.content %}
+{% else %}
+  <div class="empty">
+    <h1>No briefs yet</h1>
+    <p>The first brief will appear here after the next morning run.</p>
+  </div>
+{% endif %}

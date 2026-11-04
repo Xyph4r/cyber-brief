@@ -1,0 +1,21 @@
+title: Cyber Morning Brief
+description: Daily cybersecurity news — breaches, CVEs, threat intel, defense and policy — with links to the original sources.
+timezone: Europe/Berlin
+url: "https://xyph4r.github.io"
+baseurl: "/cyber-brief"
+permalink: /:year/:month/:day/
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+future: true
+plugins:
+  - jekyll-feed
+# how many days the "By category" page reaches back
+category_days: 14
+exclude:
+  - README.md
+  - ROUTINE_PROMPT.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor

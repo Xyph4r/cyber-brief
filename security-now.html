@@ -1,0 +1,26 @@
+---
+layout: default
+title: Security Now cross-checks
+---
+<h1 class="page-title">Security Now cross-checks</h1>
+<p class="muted">Each week the routine reads the <a href="https://www.grc.com/securitynow.htm">Security Now</a> transcript and lists what the daily briefs missed.</p>
+<div data-brief>
+{% assign found = false %}
+{% for post in site.posts %}{% if post.securitynow %}
+  {% assign found = true %}
+  {% assign chunks = post.content | split: '<h2 ' %}
+  {% for chunk in chunks %}
+    {% assign head = chunk | split: '>' | first %}
+    {% if head == 'id="security-now"' %}
+    <section class="cat-panel cat-security-now day">
+      <h2 class="day-title"><a href="{{ post.url | relative_url }}#security-now">Episode #{{ post.securitynow }}{% if post.securitynow_title %} — {{ post.securitynow_title }}{% endif %}</a></h2>
+      <p class="muted">Checked in the brief of {{ post.date | date: "%A, %-d %B %Y" }} ·
+        <a href="https://www.grc.com/sn/sn-{{ post.securitynow }}.txt">transcript</a> ·
+        <a href="https://www.grc.com/sn/sn-{{ post.securitynow }}-notes.pdf">show notes</a></p>
+      {{ chunk | split: '</h2>' | last }}
+    </section>
+    {% endif %}
+  {% endfor %}
+{% endif %}{% endfor %}
+{% unless found %}<p class="muted">No episodes cross-checked yet.</p>{% endunless %}
+</div>

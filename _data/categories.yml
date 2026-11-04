@@ -1,0 +1,10 @@
+# id must match the {#id} on the section header in each brief
+- { id: top,          name: "Top stories",                 icon: "★", tag: "top",       browse: false }
+- { id: breaches,     name: "Breaches & incidents",        icon: "⚠", tag: "breach",    browse: true }
+- { id: vulns,        name: "Vulnerabilities & patches",   icon: "⛨", tag: "vuln",      browse: true }
+- { id: threat-intel, name: "Threat intel & red team",     icon: "☠", tag: "threat",    browse: true }
+- { id: blue-team,    name: "Blue team & defense",         icon: "⛉", tag: "defense",   browse: true }
+- { id: industry,     name: "Industry, policy & developments", icon: "§", tag: "industry", browse: true }
+- { id: learning,     name: "Worth reading",               icon: "✎", tag: "learning",  browse: true }
+- { id: security-now, name: "Security Now cross-check",    icon: "◉", tag: "sn",        browse: true }
+- { id: sources,      name: "Sources",                     icon: "↗", tag: "sources",   browse: false }
