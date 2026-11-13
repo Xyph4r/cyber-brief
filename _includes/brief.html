@@ -7,7 +7,7 @@
     <div class="chips" data-chips></div>
     <input class="filter" type="search" placeholder="Filter items… (ransomware, CVE-2026, Microsoft, Germany)" data-filter>
   </header>
-  <div class="brief-body" data-brief>
+  <div class="brief-body" data-brief data-url="{{ p.url | relative_url }}">
     {{ include.body }}
   </div>
   <nav class="pager">

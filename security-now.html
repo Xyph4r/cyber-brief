@@ -12,7 +12,7 @@ title: Security Now cross-checks
   {% for chunk in chunks %}
     {% assign head = chunk | split: '>' | first %}
     {% if head == 'id="security-now"' %}
-    <section class="cat-panel cat-security-now day">
+    <section class="cat-panel cat-security-now day" data-url="{{ post.url | relative_url }}">
       <h2 class="day-title"><a href="{{ post.url | relative_url }}#security-now">Episode #{{ post.securitynow }}{% if post.securitynow_title %} — {{ post.securitynow_title }}{% endif %}</a></h2>
       <p class="muted">Checked in the brief of {{ post.date | date: "%A, %-d %B %Y" }} ·
         <a href="https://www.grc.com/sn/sn-{{ post.securitynow }}.txt">transcript</a> ·
