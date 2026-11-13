@@ -7,10 +7,10 @@
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
 {% include meta.html %}
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v={{ site.time | date: '%s' }}">
   {% feed_meta %}
   {%- if page.item_id %}
-  <script src="{{ '/assets/js/item.js' | relative_url }}" data-target="{{ page.post_url | relative_url }}#{{ page.item_id }}"></script>
+  <script src="{{ '/assets/js/item.js' | relative_url }}?v={{ site.time | date: '%s' }}" data-target="{{ page.post_url | relative_url }}#{{ page.item_id }}"></script>
   {%- endif %}
 </head>
 <body data-items="{{ '/i/' | relative_url }}">
@@ -32,7 +32,7 @@
   <footer class="site-footer wrap">
     Compiled daily by Claude from public sources. Every item links to its original source — check there before acting on anything.
   </footer>
-  <script src="{{ '/assets/js/categories.js' | relative_url }}"></script>
-  <script src="{{ '/assets/js/brief.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/categories.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
+  <script src="{{ '/assets/js/brief.js' | relative_url }}?v={{ site.time | date: '%s' }}"></script>
 </body>
 </html>

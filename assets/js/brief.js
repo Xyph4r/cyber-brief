@@ -100,8 +100,14 @@
   var revealTarget = function () {
     var id = decodeURIComponent(location.hash.slice(1));
     var el = id && document.getElementById(id);
+    document.querySelectorAll("[data-brief] li.is-target").forEach(function (x) { x.classList.remove("is-target", "pulse"); });
     if (!el || el.tagName !== "LI") return;
     if (input && el.classList.contains("hidden")) { input.value = ""; input.dispatchEvent(new Event("input")); }
+    // Set the highlight ourselves: :target is not applied reliably after a scripted redirect
+    // in every browser (e.g. some in-app browsers), and it doesn't update on history navigation.
+    el.classList.add("is-target");
+    void el.offsetWidth; // restart the pulse animation
+    el.classList.add("pulse");
     requestAnimationFrame(function () { el.scrollIntoView({ block: "start" }); });
   };
 

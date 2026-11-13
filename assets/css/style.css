@@ -52,7 +52,10 @@ a:hover { text-decoration: underline; }
 
 /* item IDs, permalink + share */
 [data-brief] li[id] { scroll-margin-top: 80px; }
-[data-brief] li:target { border-color: var(--cat, var(--accent)); box-shadow: 0 0 0 2px var(--cat, var(--accent)); }
+[data-brief] li:target, [data-brief] li.is-target { border-color: var(--cat, var(--accent)); box-shadow: 0 0 0 2px var(--cat, var(--accent)); background: var(--panel-2); background: color-mix(in srgb, var(--cat, var(--accent)) 12%, var(--panel)); }
+[data-brief] li.is-target.pulse { animation: item-pulse 1.1s ease-out 2; }
+@keyframes item-pulse { from { box-shadow: 0 0 0 12px color-mix(in srgb, var(--cat, var(--accent)) 30%, transparent); } to { box-shadow: 0 0 0 2px var(--cat, var(--accent)); } }
+@media (prefers-reduced-motion: reduce) { [data-brief] li.is-target.pulse { animation: none; } }
 .item-actions { float: right; display: inline-flex; align-items: center; gap: 8px; margin: 4px 0 0 12px; font-size: 12px; }
 .item-id { font-family: var(--mono); color: var(--muted); }
 .item-id:hover { color: var(--link); }
