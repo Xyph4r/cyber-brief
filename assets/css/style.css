@@ -50,6 +50,18 @@ a:hover { text-decoration: underline; }
 [data-brief] p { margin: 8px 0; }
 [data-brief] li.hidden, [data-brief] .sec-hidden { display: none; }
 
+/* item IDs, permalink + share */
+[data-brief] li[id] { scroll-margin-top: 80px; }
+[data-brief] li:target { border-color: var(--cat, var(--accent)); box-shadow: 0 0 0 2px var(--cat, var(--accent)); }
+.item-actions { float: right; display: inline-flex; align-items: center; gap: 8px; margin: 4px 0 0 12px; font-size: 12px; }
+.item-id { font-family: var(--mono); color: var(--muted); }
+.item-id:hover { color: var(--link); }
+.item-share { font: inherit; font-size: 12px; color: var(--muted); background: var(--panel-2); border: 1px solid var(--line); border-radius: 6px; padding: 1px 8px; cursor: pointer; }
+.item-share:hover, .item-share:focus-visible { color: var(--text); border-color: var(--cat, var(--accent)); outline: none; }
+.item-share.done { color: var(--accent); border-color: var(--accent); }
+.item-back { margin-top: 20px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
 .cat-top { --cat: var(--c-top); } .cat-breaches { --cat: var(--c-breaches); } .cat-vulns { --cat: var(--c-vulns); }
 .cat-threat-intel { --cat: var(--c-threat-intel); } .cat-blue-team { --cat: var(--c-blue-team); } .cat-industry { --cat: var(--c-industry); }
 .cat-learning { --cat: var(--c-learning); } .cat-security-now { --cat: var(--c-security-now); } .cat-sources { --cat: var(--c-sources); }

@@ -22,7 +22,7 @@ title: By category
         {% assign head = chunk | split: '>' | first %}
         {% if head == marker %}
           {% assign found = true %}
-          <div class="day">
+          <div class="day" data-url="{{ post.url | relative_url }}">
             <h3 class="day-title"><a href="{{ post.url | relative_url }}#{{ c.id }}">{{ post.date | date: "%A, %-d %B" }}</a></h3>
             {{ chunk | split: '</h2>' | last }}
           </div>

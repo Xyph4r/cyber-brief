@@ -1,0 +1,16 @@
+---
+layout: default
+---
+{%- assign cat = site.data.categories | where: "id", page.section | first -%}
+{%- capture target %}{{ page.post_url | relative_url }}#{{ page.item_id }}{% endcapture -%}
+<article class="brief item-page">
+  <header class="brief-head">
+    <p class="kicker">{% if cat %}{{ cat.icon }} {{ cat.name }} · {% endif %}{{ page.date | date: "%A, %-d %B %Y" }}</p>
+  </header>
+  <div class="brief-body" data-brief data-url="{{ page.post_url | relative_url }}">
+    <div class="cat-{{ page.section }}">
+    {{ content }}
+    </div>
+  </div>
+  <p class="item-back"><a href="{{ target }}">Read it in the full brief →</a></p>
+</article>
